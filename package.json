@@ -1,5 +1,5 @@
 {
-  "name": "Get Lemons",
+  "name": "get-lemons",
   "version": "1.0.0",
   "description": "Get Lemons Grocery Planning",
   "main": "server.js",
