@@ -9,15 +9,15 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routers/main.js')
 const signUpRoutes = require('./routers/signUp')
-// const loginRoutes = require('./routers/login.js')
-// const homeRoutes = require('./routers/home')
+const loginRoutes = require('./routers/login')
+const homeRoutes = require('./routers/home')
 // const groceriesRoutes = require('./routers/groceries')
 // const recipesRoutes = require('./routers/recipes')
 
 require('dotenv').config({path: './config/.env'})
 
 // Passport config
-// require('./config/passport')(passport)
+require('./config/passport')(passport)
 
 connectDB()
 
@@ -44,8 +44,8 @@ app.use(flash())
   
 app.use('/', mainRoutes)
 app.use('/signup', signUpRoutes)
-// app.use('/login', loginRoutes)
-// app.use('/home', homeRoutes)
+app.use('/login', loginRoutes)
+app.use('/home', homeRoutes)
 // app.use('/groceries', groceriesRoutes)
 // app.use('/recipes', recipesRoutes)
  
