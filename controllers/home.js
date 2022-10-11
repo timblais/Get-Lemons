@@ -6,13 +6,15 @@ module.exports = {
         console.log(req.user)
         try{
             const groceryItems = await Grocery.find({userId: req.user.id, active: true})
-            console.log(groceryItems)
-            res.render('home.ejs', {user: req.user, groceries: groceryItems})
+            const categorySet = new Set()
+            groceryItems.forEach(element => {
+                categorySet.add(element['category'])
+            });
+            res.render('home.ejs', {user: req.user, groceries: groceryItems, category: categorySet})
         }catch(err){
             console.log(err)
         }
     },
-
 
     createGroceryItem: async (req, res)=>{
         try{
@@ -24,4 +26,42 @@ module.exports = {
         }
     },
 
-}
+    markComplete: async (req, res)=>{
+        try{
+            await Grocery.findOneAndUpdate({_id:req.body.itemIdFromJSFile},{
+                completed: true
+            })
+            console.log('Marked Complete')
+            res.json('Marked Complete')
+        }catch(err){
+            console.log(err)
+        }
+    },
+
+    markIncomplete: async (req, res)=>{
+        try{
+            await Grocery.findOneAndUpdate({_id:req.body.itemIdFromJSFile},{
+                completed: false
+            })
+            console.log('Marked Incomplete')
+            res.json('Marked Incomplete')
+        }catch(err){
+            console.log(err)
+        }
+    },
+
+    removeItem: async (req, res)=>{
+        console.log(req.body.todoIdFromJSFile)
+        try{
+            await Grocery.findOneAndUpdate({_id:req.body.itemIdFromJSFile},{
+                completed: true,
+                active: false
+            })
+            console.log('Removed Item')
+            res.json('Removed Item')
+        }catch(err){
+            console.log(err)
+        }
+    }
+}  
+
