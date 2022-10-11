@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Lemons</title>
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
@@ -33,18 +33,26 @@
             <input type="text" placeholder="Category" name='category'>
             <input type="submit">
         </form>
-        <% groceries.forEach( el => { %>
-            <li class='groceryItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.item %></span>
-                <span><%= el.quantity %></span>
-                <span><%= el.category %></span>
-                <span class='del'> Remove </span>
-            </li>
-    <% }) %>    
-    </ul>
+        <ul>
+            <% category.forEach( el => { %>
+                <li class='foodCategory'><%= el %>
+                    <ul>
+                        <% groceries.forEach( e => { %>
+                            <% if (e.category == el) { %>
+                                <li class='groceryItem' data-id='<%=e._id%>'>
+                                    <span><%= e.quantity %></span>
+                                    <span class='<%= e.completed === true ? 'completed' : 'not'%>'><%= e.item %></span>
+                                    <span class='del'> Remove </span>
+                                </li>
+                           <% } %>
+                       <% }) %>
+                    </ul>
+            <% }) %> 
+        </ul>
     </div>
 
-
-    <script src="public/main.js"></script>
+    
+ 
+    <script src="js/main.js"></script>
 </body>
 </html>
