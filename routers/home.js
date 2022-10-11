@@ -5,5 +5,6 @@ const homeController = require('../controllers/home')
 const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, homeController.getHome)
+router.post('/addItem', homeController.createGroceryItem)
 
 module.exports = router

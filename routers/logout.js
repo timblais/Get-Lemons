@@ -4,7 +4,6 @@ const authController = require('../controllers/auth')
 const mainController = require('../controllers/main')
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
-router.get('/', mainController.getIndex)
-
+router.get('/', authController.logout)
 
 module.exports = router

@@ -13,11 +13,36 @@
             <li>
                 <a href="/home">Get Lemons</a>
             </li>
+            <li>
+                <a href="/logout">Log Out</a>
+            </li>
         </ul>
     </nav>
 
     <h1>Get Lemons</h1>
     <h2>Welcome, <%= user.userName %>!</h2>
+
+    <button id="newList">Create New Grocery List</button>
+
+    <div id="list">
+        <h3>My List</h3>
+        <h4>Add New Item</h4>
+        <form action="/home/addItem" method='POST'>
+            <input type="text" placeholder="Item Name" name='groceryItem'>
+            <input type="text" placeholder="Quantity" name='quantity'>
+            <input type="text" placeholder="Category" name='category'>
+            <input type="submit">
+        </form>
+        <% groceries.forEach( el => { %>
+            <li class='groceryItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.item %></span>
+                <span><%= el.quantity %></span>
+                <span><%= el.category %></span>
+                <span class='del'> Remove </span>
+            </li>
+    <% }) %>    
+    </ul>
+    </div>
 
 
     <script src="public/main.js"></script>

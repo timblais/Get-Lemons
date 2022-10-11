@@ -17,6 +17,10 @@ const GrocerySchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  active: {
+    type: Boolean,
+    required: true,
+  },
   userId: {
     type: String,
     required: true
