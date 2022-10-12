@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Lemons</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/home">Get Lemons</a>
+            </li>
+            <li>
+                <a href="/logout">Log Out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Get Lemons</h1>
+    <h2><%= user.userName %>'s Recipes!</h2>
+
+    <button id="newList">Add A New Recipe</button>
+
+    <div id="list">
+        <h3>My Recipes</h3>
+    </div>
+
+    <h4>Create New Recipe</h4>
+    <form action="/recipes/createrecipe" method='POST'>
+        <input type="text" placeholder="Recipe Name" name='recipeName'>
+        <input type="submit">
+    </form>
+
+    <section>
+        <% recipes.forEach( el => { %>
+            <div class='recipe' data-id='<%el._id%>'>
+                <button class="editRecipe">EDIT</button>
+                <h6><%= el.name %></h6>
+                <ul>
+                    <% groceries.forEach( e => { %>
+                        <% if (e.recipe == el._id) { %>
+                            <li class='groceryItem' data-id='<%=e._id%>'>
+                                <span><%= e.quantity %></span>
+                                <span><%= e.item %></span>
+                            </li>
+                       <% } %>
+                   <% }) %>
+                </ul>
+            </div>
+        <% }) %> 
+    </section>
+
+    
+ 
+    <script src="js/main.js"></script>
+</body>
+</html>
