@@ -13,7 +13,7 @@ const loginRoutes = require('./routers/login')
 const logoutRoutes = require('./routers/logout')
 const homeRoutes = require('./routers/home')
 // const groceriesRoutes = require('./routers/groceries')
-// const recipesRoutes = require('./routers/recipes')
+const recipesRoutes = require('./routers/recipes')
 
 require('dotenv').config({path: './config/.env'})
 
@@ -49,7 +49,7 @@ app.use('/login', loginRoutes)
 app.use('/logout', logoutRoutes)
 app.use('/home', homeRoutes)
 // app.use('/groceries', groceriesRoutes)
-// app.use('/recipes', recipesRoutes)
+app.use('/recipes', recipesRoutes)
  
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
