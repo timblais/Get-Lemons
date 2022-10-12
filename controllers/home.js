@@ -51,7 +51,7 @@ module.exports = {
     },
 
     removeItem: async (req, res)=>{
-        console.log(req.body.todoIdFromJSFile)
+        console.log(req.body.itemIdFromJSFile)
         try{
             await Grocery.findOneAndUpdate({_id:req.body.itemIdFromJSFile},{
                 completed: true,
