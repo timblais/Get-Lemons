@@ -36,7 +36,7 @@
 
     <section>
         <% recipes.forEach( el => { %>
-            <div class='recipe' data-id='<%el._id%>'>
+            <div class='recipe' data-id='<%=el._id %>'>
                 <button class="editRecipe">EDIT</button>
                 <h6><%= el.name %></h6>
                 <ul>
