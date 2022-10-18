@@ -75,15 +75,5 @@ async function markIncomplete(){
 
 async function editRecipe(){
     const recipeId = this.parentNode.dataset.id
-    try{
-        const response = await fetch('recipes/edit',{
-            method: 'post',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'recipeIdFromJSFile': recipeId
-            })
-        })
-    }catch(err){
-        console.log(err)
-    }
+    window.location.replace(`/recipes/edit/:${recipeId}`)
 }
