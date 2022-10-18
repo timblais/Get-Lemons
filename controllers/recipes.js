@@ -19,7 +19,8 @@ module.exports = {
     editRecipes: async (req,res)=>{
         console.log(req.user)
         try{
-            const recipeName = await Recipe.findOne({userId: req.user.id, _id: recipeToEdit})
+            const recipeId = await req.params.recipeId.substring(1)
+            const recipeName = await Recipe.findOne({userId: req.user.id, _id: recipeId})
             const groceryItems = await Grocery.find({userId: req.user.id, recipe: recipeName._id})
             res.render('editRecipe.ejs', {user: req.user, groceries: groceryItems, recipe: recipeName})
         }catch(err){
@@ -38,18 +39,11 @@ module.exports = {
     },
 
 
-
-    setEdit: async (req, res)=>{
-        
+    addItem: async (req, res)=>{
         try{
-            // const recipeId = localStorage.getItem('recipe')
-            recipeToEdit = await req.body.recipeIdFromJSFile
-            console.log(recipeToEdit)
-            // const recipeName = await Recipe.findOne({_id: recipeId})
-            // const groceryItems = await Grocery.find({userId: req.user.id, recipe: recipeName._id})
-            // res.render('editRecipe.ejs', {user: req.user, groceries: groceryItems, recipes: recipeName})
-            // res.redirect('/recipes/edit')
-            res.json('Grabbed Recipe ID')
+            await Grocery.create({item: req.body.groceryItem, quantity: req.body.quantity, category: req.body.category, completed: false, active: false, userId: req.user.id, recipe: req.body.recipe})
+            console.log('Item Added!')
+            res.redirect(`/recipes/edit/:${req.body.recipe}`)
         }catch(err){
             console.log(err)
         }
