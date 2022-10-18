@@ -22,7 +22,26 @@
     <h1>Edit Recipe</h1>
 
     <div id="list">
-        <h3><%=recipeName.name %></h3>
+        <h3><%=recipe.name%></h3>
+
+        <form action="/recipes/edit/addItem" method='POST'>
+            <input type="text" placeholder="Item Name" name='groceryItem'>
+            <input type="text" placeholder="Quantity" name='quantity'>
+            <input type="text" placeholder="Category" name='category'>
+            <input type="hidden" name="recipe" value="<%=recipe._id%>">
+            <input type="submit">
+        </form>
+
+        <ul>
+            <% groceries.forEach(el => { %>
+                <li>
+                    <span><%= el.quantity %></span>
+                    <span><%= el.item %></span>
+                    <span class='del'> Remove </span> 
+                    <!-- Need to add an actual delete here, as the active put request from the home list won't work since we are pulling active or inactive. Deleting from here would delete from an active list though, so need to consider that.-->
+                </li>
+            <% }) %>
+        </ul>
     </div>
 
     
