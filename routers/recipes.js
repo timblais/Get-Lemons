@@ -5,7 +5,7 @@ const recipeController = require('../controllers/recipes')
 const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, recipeController.getRecipes)
-router.post('/edit', ensureAuth, recipeController.editRecipes)
-router.post('/createrecipe', recipeController.createRecipe)
+router.get('/edit/:recipeId', ensureAuth, recipeController.editRecipes)
+router.post('/edit/addItem', recipeController.addItem)
 
 module.exports = router
