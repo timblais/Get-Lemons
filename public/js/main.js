@@ -2,6 +2,7 @@ const deleteBtn = document.querySelectorAll('.del')
 const groceryIsIncomplete = document.querySelectorAll('span.not')
 const groceryIsComplete = document.querySelectorAll('span.completed')
 const recipeEdit = document.querySelectorAll('.editRecipe')
+const newGroceryList = document.querySelector('#newGroceryList')
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', removeItem)
@@ -18,6 +19,8 @@ Array.from(groceryIsComplete).forEach((el)=>{
 Array.from(recipeEdit).forEach((el) => {
     el.addEventListener('click', editRecipe)
 })
+
+newGroceryList.addEventListener('click', createNewList)
 
 async function removeItem(){
     const itemId = this.parentNode.dataset.id
@@ -76,4 +79,20 @@ async function markIncomplete(){
 async function editRecipe(){
     const recipeId = this.parentNode.dataset.id
     window.location.replace(`/recipes/edit/:${recipeId}`)
+}
+
+async function createNewList(){
+    try{
+        const response = await fetch('home/createNewList', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
 }
