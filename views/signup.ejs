@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Handlee&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>
-                <a href="/home">Get Lemons</a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <ul class="leftNav">
+                <li>
+                    <a class='logo' href="/home">Get Lemons</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <h1>Sign Up</h1>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>

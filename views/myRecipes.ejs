@@ -5,19 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Lemons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Handlee&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>
-                <a href="/home">Get Lemons</a>
-            </li>
-            <li>
-                <a href="/logout">Log Out</a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <ul class="leftNav">
+                <li>
+                    <a class='logo' href="/home">Get Lemons</a>
+                </li>
+            </ul>
+            <ul class="rightNav">
+                <li>
+                    <a href="/recipes">Recipes</a>
+                </li>
+                <li>
+                    <a href="/logout">Log Out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     <h1>Get Lemons</h1>
     <h2><%= user.userName %>'s Recipes!</h2>
