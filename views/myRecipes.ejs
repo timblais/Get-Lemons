@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Handlee&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -18,10 +19,19 @@
                 <li>
                     <a class='logo' href="/home">Get Lemons</a>
                 </li>
+                <li>
+                    <a href="/home">Groceries</a>
+                </li>
+                <li>
+                    <a href="/recipes">Recipes</a>
+                </li>
             </ul>
             <ul class="rightNav">
                 <li>
-                    <a href="/recipes">Recipes</a>
+                    <span class="material-symbols-outlined">
+                        account_circle
+                        </span>
+                    <span><%= user.userName %></span>
                 </li>
                 <li>
                     <a href="/logout">Log Out</a>
@@ -30,42 +40,38 @@
         </nav>
     </header>
 
-    <h1>Get Lemons</h1>
-    <h2><%= user.userName %>'s Recipes!</h2>
+    <main class="groceriesRecipes">
+        <section class="grTitle">
+            <h1>Recipes</h1>
+        </section>
+        <section class="addNewRecipe">
+            <h2>Create New Recipe</h2>
+            <form action="/recipes/createrecipe" method='POST'>
+                <input class="textbox" type="text" placeholder="Recipe Name" name='recipeName'>
+                <input class="submit" type="submit" value="Submit">
+            </form>
+        </section>
+        <section class="myRecipes">
+            <h2>My Recipes</h2>
+            <% recipes.forEach( el => { %>
+                <div class='recipe' data-id='<%=el._id %>'>
+                    <h4><%= el.name %></h4>
+                    <button class="editRecipe">EDIT</button>
+                    <ul>
+                        <% groceries.forEach( e => { %>
+                            <% if (e.recipe == el._id) { %>
+                                <li class='groceryItem' data-id='<%=e._id%>'>
+                                    <span><%= e.quantity %></span>
+                                    <span><%= e.item %></span>
+                                </li>
+                           <% } %>
+                       <% }) %>
+                    </ul>
+                </div>
+            <% }) %> 
+        </section>
+    </main>
 
-    <button id="newList">Add A New Recipe</button>
-
-    <div id="list">
-        <h3>My Recipes</h3>
-    </div>
-
-    <h4>Create New Recipe</h4>
-    <form action="/recipes/createrecipe" method='POST'>
-        <input type="text" placeholder="Recipe Name" name='recipeName'>
-        <input type="submit">
-    </form>
-
-    <section>
-        <% recipes.forEach( el => { %>
-            <div class='recipe' data-id='<%=el._id %>'>
-                <button class="editRecipe">EDIT</button>
-                <h6><%= el.name %></h6>
-                <ul>
-                    <% groceries.forEach( e => { %>
-                        <% if (e.recipe == el._id) { %>
-                            <li class='groceryItem' data-id='<%=e._id%>'>
-                                <span><%= e.quantity %></span>
-                                <span><%= e.item %></span>
-                            </li>
-                       <% } %>
-                   <% }) %>
-                </ul>
-            </div>
-        <% }) %> 
-    </section>
-
-    
- 
     <script src="js/main.js"></script>
 </body>
 </html>
