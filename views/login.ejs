@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <header>
         <nav>
             <ul class="leftNav">
@@ -21,21 +22,30 @@
             </ul>
         </nav>
     </header>
-    <h1>Login</h1>
-    <% if (locals.messages.errors) { %>
-        <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-    <% if (locals.messages.info) { %>
-        <% messages.info.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
-    </form>
+    
+    <main class="loginSignUp">
+        <section class="title">
+            <h1>Login</h1>
+        </section>
+        <section class="loginForm">
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <% if (locals.messages.info) { %>
+                <% messages.info.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <form action="/login" method="POST">
+                <input class='textbox' type="email" name="email" placeholder="Email">
+                <input class='textbox' type="password" name="password" placeholder="Password">
+                <input class="submit" type="submit" value="Submit">
+            </form>
+        </section>
+        
+    </main>
+    
 </body>
 </html>
