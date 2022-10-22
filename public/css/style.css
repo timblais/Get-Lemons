@@ -173,6 +173,10 @@ ul.rightNav > li {
     border: 1px solid grey;
 }
 
+.loginForm > form > .submit:hover {
+    background-color: rgb(54, 102, 191);
+}
+
 .signUpForm {
     display: flex;
     flex-direction: column;
@@ -212,6 +216,10 @@ ul.rightNav > li {
     background-color: cornflowerblue;
     color: #fde16c;
     border: 1px solid grey;
+}
+
+.signUpForm > form > .submit:hover {
+    background-color: rgb(54, 102, 191);
 }
 
 
@@ -310,6 +318,10 @@ ul.rightNav > li {
     background-color: cornflowerblue;
     color: #fde16c;
     border: 1px solid grey;
+}
+
+.addNew .submit:hover, #newGroceryList:hover, .addNewRecipe .submit:hover {
+    background-color: rgb(54, 102, 191);
 }
 
 .addNew .dropdown {
@@ -416,6 +428,7 @@ li {
     margin: 2.5%;
     color: cornflowerblue;
     font-size: 1.5rem;
+    text-decoration: underline;
 }
 
 .editRecipe {
@@ -425,5 +438,69 @@ li {
     align-items: center;
     width: 20%;
     margin: 2.5%;
+    background-color: cornflowerblue;
+    color: #fde16c;
+    border: 1px solid grey;
 }
 
+.editRecipe:hover {
+    background-color: rgb(54, 102, 191);
+}
+
+.myRecipes .groceryItem {
+    color: cornflowerblue;
+}
+
+/* Edit Recipe Page */
+
+.editPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: #fde16c;
+    height: 100%;
+    width: 100%;
+}
+
+.editPage h1 {
+    color: cornflowerblue;
+    font-size: 4rem;
+    margin: 1rem;
+}
+
+.editPage #list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#list h3 {
+    color: cornflowerblue;
+    font-size: 2rem;
+    text-decoration: underline;
+    margin: 1rem;
+}
+
+#list form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#list ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem;
+}
+
+#list ul * {
+    color: cornflowerblue;
+    font-size: 1.5rem;
+}
