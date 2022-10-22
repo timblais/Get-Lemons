@@ -8,8 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Handlee&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
     <header>
@@ -18,10 +19,19 @@
                 <li>
                     <a class='logo' href="/home">Get Lemons</a>
                 </li>
+                <li>
+                    <a href="/home">Groceries</a>
+                </li>
+                <li>
+                    <a href="/recipes">Recipes</a>
+                </li>
             </ul>
             <ul class="rightNav">
                 <li>
-                    <a href="/recipes">Recipes</a>
+                    <span class="material-symbols-outlined">
+                        account_circle
+                        </span>
+                    <span><%= user.userName %></span>
                 </li>
                 <li>
                     <a href="/logout">Log Out</a>
@@ -30,33 +40,42 @@
         </nav>
     </header>
 
-    <h1>Edit Recipe</h1>
+    <main class="editPage">
 
-    <div id="list">
-        <h3><%=recipe.name%></h3>
+        <h1>Edit Recipe</h1>
 
-        <form action="/recipes/edit/addItem" method='POST'>
-            <input type="text" placeholder="Item Name" name='groceryItem'>
-            <input type="text" placeholder="Quantity" name='quantity'>
-            <input type="text" placeholder="Category" name='category'>
-            <input type="hidden" name="recipe" value="<%=recipe._id%>">
-            <input type="submit">
-        </form>
+        <section class="addNew">
+            <div id="list">
+                <h3><%=recipe.name%></h3>
+        
+                <form action="/recipes/edit/addItem" method='POST'>
+                    <input class="textbox" type="text" placeholder="Item Name" name='groceryItem'>
+                    <input class="textbox" type="text" placeholder="Quantity" name='quantity'>
+                    <input class="textbox" type="text" placeholder="Category" name='category'>
+                    <input type="hidden" name="recipe" value="<%=recipe._id%>">
+                    <input class="submit" type="submit" value="Submit">
+                </form>
+        
+                <ul>
+                    <% groceries.forEach(el => { %>
+                        <li>
+                            <span><%= el.quantity %> <%= el.item %></span>
+                            <span class="del material-symbols-outlined">
+                                delete
+                                </span>
+                            <!-- Need to add an actual delete here, as the active put request from the home list won't work since we are pulling active or inactive. Deleting from here would delete from an active list though, so need to consider that.-->
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
 
-        <ul>
-            <% groceries.forEach(el => { %>
-                <li>
-                    <span><%= el.quantity %></span>
-                    <span><%= el.item %></span>
-                    <span class='del'> Remove </span> 
-                    <!-- Need to add an actual delete here, as the active put request from the home list won't work since we are pulling active or inactive. Deleting from here would delete from an active list though, so need to consider that.-->
-                </li>
-            <% }) %>
-        </ul>
-    </div>
+    
 
     
  
-    <script src="js/main.js"></script>
+    <script src="../../js/main.js"></script>
 </body>
 </html>

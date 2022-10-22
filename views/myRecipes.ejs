@@ -61,8 +61,7 @@
                         <% groceries.forEach( e => { %>
                             <% if (e.recipe == el._id) { %>
                                 <li class='groceryItem' data-id='<%=e._id%>'>
-                                    <span><%= e.quantity %></span>
-                                    <span><%= e.item %></span>
+                                    <span><%= e.quantity %> <%= e.item %></span>
                                 </li>
                            <% } %>
                        <% }) %>
